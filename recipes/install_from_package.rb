@@ -27,8 +27,7 @@ apt_repository "apache-cassandra" do
   components ["main"]
   action :add
   keyserver "pgp.mit.edu"
-  key "F758CE318D77295D"
-  notifies :run, "execute[apt-get update]", :immediately  
+  key "F758CE318D77295D"  
 end
 
 # According to http://wiki.apache.org/cassandra/DebianPackaging
@@ -41,7 +40,6 @@ apt_repository "apache-cassandra-extrakey" do
   action :add
   keyserver "pgp.mit.edu"
   key "2B5C1B00"  
-  notifies :run, "execute[apt-get update]", :immediately
 end
 
 execute "apt-get update" do
