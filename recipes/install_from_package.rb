@@ -40,7 +40,7 @@ apt_repository "apache-cassandra-extrakey" do
   action :add
   keyserver "pgp.mit.edu"
   key "2B5C1B00"
-  notifies :run, "execute[apt-get update]", :immediately
+  notifies :run, "execute[apt-get-update]", :immediately
 end
 
 
