@@ -125,10 +125,6 @@ reduce_cache_capacity_to: <%= @cassandra[:reduce_cache_capacity_to] %> # 0.6
 # Cassandra nodes use this list of hosts to find each other and learn
 # the topology of the ring.  You must change this if you are running
 # multiple nodes!
-#seeds:
-#<%- @seeds.each do |seed| -%>
-#    - <%= seed %>
-#<%- end -%>
 
 seed_provider:
     # Addresses of hosts that are deemed contact points. 
