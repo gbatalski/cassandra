@@ -125,10 +125,24 @@ reduce_cache_capacity_to: <%= @cassandra[:reduce_cache_capacity_to] %> # 0.6
 # Cassandra nodes use this list of hosts to find each other and learn
 # the topology of the ring.  You must change this if you are running
 # multiple nodes!
-seeds:
-<%- @seeds.each do |seed| -%>
-    - <%= seed %>
-<%- end -%>
+#seeds:
+#<%- @seeds.each do |seed| -%>
+#    - <%= seed %>
+#<%- end -%>
+
+seed_provider:
+    # Addresses of hosts that are deemed contact points. 
+    # Cassandra nodes use this list of hosts to find each other and learn
+    # the topology of the ring.  You must change this if you are running
+    # multiple nodes!
+    - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+      parameters:
+          # seeds is actually a comma-delimited list of addresses.
+          # Ex: "<ip1>,<ip2>,<ip3>"
+          - seeds: "<%= seeds %>"
+
+
+
 
 # Access mode.  mmapped i/o is substantially faster, but only practical on
 # a 64bit machine (which notably does not include EC2 "small" instances)
