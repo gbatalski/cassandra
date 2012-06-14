@@ -26,7 +26,7 @@ apt_repository "apache-cassandra" do
   distribution "11x"
   components ["main"]
   action :add
-  keyserver "pgp.mit.edu"
+  keyserver "keyserver.ubuntu.com"
   key "F758CE318D77295D"  
 end
 
@@ -38,7 +38,7 @@ apt_repository "apache-cassandra-extrakey" do
   distribution "11x"
   components ["main"]
   action :add
-  keyserver "pgp.mit.edu"
+  keyserver "keyserver.ubuntu.com"
   key "2B5C1B00"  
 end
 
