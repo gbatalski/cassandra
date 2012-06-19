@@ -77,3 +77,28 @@ template "#{node[:cassandra][:conf_dir]}/cassandra.yaml" do
     })
   notifies      :restart, "service[cassandra]", :delayed if startable?(node[:cassandra])
 end
+
+
+
+template "#{node[:cassandra][:conf_dir]}/log4j-server.properties" do
+  source        "log4j-server.properties.erb"
+  owner         "root"
+  group         "root"
+  mode          "0644"
+  variables     :cassandra => node[:cassandra]
+  notifies      :restart, "service[cassandra]", :delayed if startable?(node[:cassandra])
+end
+
+template "#{node[:cassandra][:conf_dir]}/cassandra-env.sh" do
+  source        "cassandra-env.sh.erb"
+  owner         "root"
+  group         "root"
+  mode          "0644"
+  variables     :cassandra => node[:cassandra]
+  notifies      :restart, "service[cassandra]", :delayed if startable?(node[:cassandra])
+end
+
+service "cassandra" do
+  supports :status => true, :restart => true, :reload => true
+  action :start
+end

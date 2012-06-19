@@ -100,6 +100,7 @@ default[:cassandra][:hinted_handoff_delay_ms]      = 50
 
 default[:cassandra][:java_heap_size_min]           = "128M"        # consider setting equal to max_heap in production
 default[:cassandra][:java_heap_size_max]           = "1650M"
+default[:cassandra][:java_heap_size_new]           = "256M"  # young generation size (consider to set 100MB per core)
 default[:cassandra][:java_heap_size_eden]          = "1500M"
 default[:cassandra][:disk_access_mode]             = "auto"
 default[:cassandra][:concurrent_reads]             = 8             # 2 per core
